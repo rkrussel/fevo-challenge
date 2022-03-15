@@ -1,13 +1,15 @@
 import express, { json } from 'express';
 import data from './accounts.json';
+import Account from './models/Account';
+import Person from './models/Person';
 import { createAccounts, createPeople, mergeAccounts } from './utils/accounts';
 
 const app = express();
 const port = 3000;
 
-const accounts = createAccounts(data);
-const people = createPeople(accounts);
-const merged = mergeAccounts(people);
+const accounts: Account[] = createAccounts(data);
+const people: Person[] = createPeople(accounts);
+const merged: Person[] = mergeAccounts(people);
 console.log('merged', merged);
 
 app.get('/', (req, res) => {

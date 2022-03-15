@@ -7,13 +7,13 @@ export const createAccounts = (data: Array<any>): Account[] => {
     })
 }
 
-export const createPeople = (accounts: Account[]) => {
+export const createPeople = (accounts: Account[]): Person[] => {
     return accounts.map((account) => {
         return new Person([account.application], account.emails, account.name);
     })
 }
 
-export const mergeAccounts = (people: Person[]) => {
+export const mergeAccounts = (people: Person[]): Person[] => {
     const merged: Person[] = [];
     people.forEach(person => {
         const match = merged.find(m => m.emails.some(email => person.emails.includes(email)))
